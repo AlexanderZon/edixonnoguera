@@ -200,8 +200,14 @@
               <li>
                 <a href="/employees"><span aria-hidden="true" class="se7en-home"></span>Empleados</a>
               </li>
-              <li><a href="/programmer">
-                <span aria-hidden="true" class="se7en-feed"></span>Programador</a>
+              <li><a href="/reposes">
+                <span aria-hidden="true" class="se7en-feed"></span>Reposos</a>
+              </li>
+              <li><a href="/directorates">
+                <span aria-hidden="true" class="se7en-feed"></span>Direcciones</a>
+              </li>
+              <li><a href="/departments">
+                <span aria-hidden="true" class="se7en-feed"></span>Departamentos</a>
               </li>
               @if(Auth::check() && Auth::user()->type=='administrator')
               <li><a href="/users">

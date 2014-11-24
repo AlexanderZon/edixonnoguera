@@ -102,19 +102,27 @@
 					<div class="form-group">
 
 			            <label class="control-label col-md-1">Dirección</label>
-			            <div class="col-md-8">
+			            <div class="col-md-5">
 			              <input class="form-control" placeholder="Escriba dirección del empleado" name="address" type="text" required>
 			            </div>
 
-			            <div class="col-md-1">
+	                  	<label class="control-label col-md-1">Departamento</label>
+	                  	<div class="col-md-2">
+	                    	<select class="select2able select2-offscreen" tabindex="-1" name="id_department" id="id_department" required>
+	                      		@foreach( $departments as $department )
+	                          		<option value="{{ $department->id }}">{{ $department->name }}</option>
+	                      		@endforeach
+	                    	</select>
+	                  	</div>	
 
-			          	</div> 
+			            <div class="col-md-1">
+			          	</div> 		  
 
 			            <div class="col-md-1">
 			              <input class="form-control" placeholder="" style="padding:0px" value="Enviar" type="submit">
-			          	</div> 			        
+			          	</div> 		        
 			       
-			          </div>
+			        </div>
 			       
 		        </form>
 		      </div>

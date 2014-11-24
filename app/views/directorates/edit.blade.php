@@ -5,7 +5,7 @@
       <div class="container-fluid main-content">
         <div class="page-title">
           <h1>
-            Edición de Municipios
+            Edición de Direcciones
           </h1>
         </div>
         <!-- DataTables Example -->
@@ -18,12 +18,18 @@
 
               <div class="widget-content padded">
 		        <form action="" method="post" class="form-horizontal">
-		          <div class="form-group">
-			            <label class="control-label col-md-2">Nombre</label>
-			            <div class="col-md-7">
-			              <input class="form-control" placeholder="Escriba el nombre de la municipio" name="nombre" type="text" value="{{ $municipio->nombre }}"/>
-			            </div>
-			        </div>
+              <div class="form-group">
+                  <label class="control-label col-md-2">Nombre</label>
+                  <div class="col-md-7">
+                    <input class="form-control" placeholder="Escriba el nombre de la dirección" name="name" type="text" value="{{ $directorate->name }}"/>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="control-label col-md-2">Director</label>
+                  <div class="col-md-7">
+                    <input class="form-control" placeholder="Escriba el nombre del director" name="director_name" type="text" value="{{ $directorate->director_name }}"/>
+                  </div>
+              </div>
 					<div class="form-group">
 			            <label class="control-label col-md-2"></label>
 			            <div class="col-md-7">

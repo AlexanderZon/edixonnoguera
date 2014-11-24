@@ -18,7 +18,11 @@ class DirectorateController extends \BaseController {
 	}
 	public function getCreate(){
 
-		return View::make('directorates.create');
+		$array = array(
+			'route' => $this->route
+			);
+
+		return View::make('directorates.create')->with( $array );
 
 	}
 	public function postCreate(){

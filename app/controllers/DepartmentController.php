@@ -18,7 +18,14 @@ class DepartmentController extends \BaseController {
 	}
 	public function getCreate(){
 
-		return View::make('departments.create');
+		$directorates = Directorates::all();
+
+		$array = array(
+			'route' => $this->route,
+			'directorates' => $directorates
+			);
+
+		return View::make('departments.create')->with( $array );
 
 	}
 	public function postCreate(){
@@ -53,8 +60,11 @@ class DepartmentController extends \BaseController {
 			$id = Crypt::decrypt($id);
 			$department = Departments::find($id);
 
+			$directorates = Directorates::all();
+
 			$array = array(
 				'department' => $department,
+				'directorates' => $directorates,
 				'route' => $this->route
 				);
 

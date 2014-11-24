@@ -33,6 +33,7 @@ class CreateEmployeesTable extends Migration {
 			$table->string('status');
 			$table->timestamps();
 			$table->softDeletes();
+		});
 	}
 
 

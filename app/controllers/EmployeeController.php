@@ -37,8 +37,12 @@ class EmployeeController extends \BaseController {
 
 	public function getCreate()
 	{
+
+    $departments = Departments::all();
+
 		$array = array(
 			'route' => $this->route,
+      'departments' => $departments
 		);
 
 		return View::make('employees.create')->with( $array );
@@ -90,9 +94,12 @@ class EmployeeController extends \BaseController {
 			$id = Crypt::decrypt($id);
 			$employee = Employees::find($id);
 
+      $departments = Departments::all();
+
 			$array = array(
 				'route' => $this->route,
 				'employee' => $employee,
+        'departments' => $departments
 				);	
 
 			return View::make('employees.edit')->with( $array );
