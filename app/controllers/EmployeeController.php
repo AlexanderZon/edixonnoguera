@@ -73,6 +73,7 @@ class EmployeeController extends \BaseController {
     $employee->admission_date = date("Y-m-d", strtotime(Input::get('admission_date')));
     $employee->address = Input::get('address');
     $employee->phone = Input::get('phone');
+    $employee->id_department = Input::get('id_department');
     $employee->type = 'normal';
     $employee->status = 'publish';
 
@@ -121,6 +122,7 @@ class EmployeeController extends \BaseController {
     $employee->admission_date = date("Y-m-d", strtotime(Input::get('admission_date')));
     $employee->address = Input::get('address');
     $employee->phone = Input::get('phone');
+    $employee->id_department = Input::get('id_department');
     $employee->type = 'normal';
     $employee->status = 'publish';
 

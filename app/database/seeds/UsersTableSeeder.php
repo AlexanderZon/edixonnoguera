@@ -9,21 +9,21 @@ class UsersTableSeeder extends Seeder {
 	{
 		
 		User::create(array(
-			'username' => 'rosangela',
+			'username' => 'edixon',
 			'password' => Hash::make('123456'),
-			'first_name' => 'Rosangela',
-			'last_name' => 'Romero',
-			'email' => 'rosangelaromero@gmail.com',
+			'first_name' => 'Edixon',
+			'last_name' => 'Noguera',
+			'email' => 'edixonnoguera@gmail.com',
 			'type' => 'administrator',
 			'status' => 'publish',
 			));
 		
 		User::create(array(
-			'username' => 'romeror',
+			'username' => 'noguerae',
 			'password' => Hash::make('654321'),
-			'first_name' => 'Rosangela',
-			'last_name' => 'Romero',
-			'email' => 'romerorosangela@gmail.com',
+			'first_name' => 'Edixon',
+			'last_name' => 'Noguera',
+			'email' => 'nogueraedixon@gmail.com',
 			'type' => 'operator',
 			'status' => 'publish',
 			));

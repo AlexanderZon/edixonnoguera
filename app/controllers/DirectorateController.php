@@ -2,85 +2,129 @@
 
 class DirectorateController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /directorate
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
+	protected $route = '/directorates';
+
+	public function getIndex(){
+
+		$directorates = Directorates::all();
+
+		$array = array(
+			'directorates' => $directorates,
+			'route' => $this->route
+			);
+
+		return View::make('directorates.index')->with($array);
+
+	}
+	public function getCreate(){
+
+		return View::make('directorates.create');
+
+	}
+	public function postCreate(){
+
+		if(Input::get('password') === Input::get('password_2')):
+
+			$directorate = new Directorates();
+			$directorate->name = Input::get('name');
+			$directorate->director_name = Input::get('director_name');
+			$directorate->save();
+
+			return Redirect::to('/directorates');
+
+		else:
+
+			$array = array(
+				'error' => 'clave_error',
+				'directorate' => Input::all()
+				);
+ 
+			return View::make('directorates.create')->with($array);
+
+		endif;
+
+	}
+	
+	public function getEdit( $id = '' ){
+
+   		if( $id != '' ):
+
+			$id = Crypt::decrypt($id);
+			$directorate = Directorates::find($id);
+
+			$array = array(
+				'directorate' => $directorate,
+				'route' => $this->route
+				);
+
+			return View::make('directorates.edit')->with($array);
+
+		else:
+
+			return Redirect::to($this->route);
+
+		endif;
+
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /directorate/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
+	
+	public function postEdit( $id = '' ){
+
+   		if( $id != '' ):
+
+			$id = Crypt::decrypt($id);
+			$directorate = Directorates::find($id);
+
+			$directorate->name = Input::get('name');
+			$directorate->director_name = Input::get('director_name');
+
+			$directorate->save();
+
+			return Redirect::to($this->route);
+
+		else:
+
+			return Redirect::to($this->route);
+
+		endif;
+
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /directorate
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
+	public function getDelete( $id ){
 
-	/**
-	 * Display the specified resource.
-	 * GET /directorate/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+		if( $id != '' ):
+			$id = Crypt::decrypt($id);
+			$directorate = Directorates::find($id);
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /directorate/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+			$array = array(
+				'directorate' => $directorate,
+				'route' => $this->route
+				);	
 
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /directorate/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
+			return View::make('directorates.delete')->with( $array );
 
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /directorate/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		else:
+
+			return Redirect::to($this->route);
+		endif;
 	}
+   
+   public function postDelete($id = '' ){
+
+   		if( $id != '' ):
+
+			$id = Crypt::decrypt($id);
+			$directorate = Directorates::destroy($id);
+
+			return Redirect::to($this->route);
+
+		else:
+
+			return Redirect::to($this->route);
+
+		endif;
+
+
+   }
 
 }

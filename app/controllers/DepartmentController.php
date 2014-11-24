@@ -2,85 +2,131 @@
 
 class DepartmentController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /department
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
+	protected $route = '/departments';
+
+	public function getIndex(){
+
+		$departments = Departments::all();
+
+		$array = array(
+			'departments' => $departments,
+			'route' => $this->route
+			);
+
+		return View::make('departments.index')->with($array);
+
+	}
+	public function getCreate(){
+
+		return View::make('departments.create');
+
+	}
+	public function postCreate(){
+
+		if(Input::get('password') === Input::get('password_2')):
+
+			$department = new Departments();
+			$department->name = Input::get('name');
+			$department->chief_name = Input::get('chief_name');
+			$department->id_directorate = Input::get('id_directorate');
+			$department->save();
+
+			return Redirect::to('/departments');
+
+		else:
+
+			$array = array(
+				'error' => 'clave_error',
+				'department' => Input::all()
+				);
+ 
+			return View::make('departments.create')->with($array);
+
+		endif;
+
+	}
+	
+	public function getEdit( $id = '' ){
+
+   		if( $id != '' ):
+
+			$id = Crypt::decrypt($id);
+			$department = Departments::find($id);
+
+			$array = array(
+				'department' => $department,
+				'route' => $this->route
+				);
+
+			return View::make('departments.edit')->with($array);
+
+		else:
+
+			return Redirect::to($this->route);
+
+		endif;
+
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /department/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
+	
+	public function postEdit( $id = '' ){
+
+   		if( $id != '' ):
+
+			$id = Crypt::decrypt($id);
+			$department = Departments::find($id);
+
+			$department->name = Input::get('name');
+			$department->chief_name = Input::get('chief_name');
+			$department->id_directorate = Input::get('id_directorate');
+
+			$department->save();
+
+			return Redirect::to($this->route);
+
+		else:
+
+			return Redirect::to($this->route);
+
+		endif;
+
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /department
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
+	public function getDelete( $id ){
 
-	/**
-	 * Display the specified resource.
-	 * GET /department/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+		if( $id != '' ):
+			$id = Crypt::decrypt($id);
+			$department = Departments::find($id);
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /department/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+			$array = array(
+				'department' => $department,
+				'route' => $this->route
+				);	
 
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /department/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
+			return View::make('departments.delete')->with( $array );
 
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /department/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		else:
+
+			return Redirect::to($this->route);
+		endif;
 	}
+   
+   public function postDelete($id = '' ){
+
+   		if( $id != '' ):
+
+			$id = Crypt::decrypt($id);
+			$department = Departments::destroy($id);
+
+			return Redirect::to($this->route);
+
+		else:
+
+			return Redirect::to($this->route);
+
+		endif;
+
+
+   }
 
 }
