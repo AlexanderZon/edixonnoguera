@@ -1,10 +1,10 @@
 <?php
 
-class IndexController extends \BaseController {
+class DepartmentController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /index
+	 * GET /department
 	 *
 	 * @return Response
 	 */
@@ -15,7 +15,7 @@ class IndexController extends \BaseController {
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /index/create
+	 * GET /department/create
 	 *
 	 * @return Response
 	 */
@@ -26,7 +26,7 @@ class IndexController extends \BaseController {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /index
+	 * POST /department
 	 *
 	 * @return Response
 	 */
@@ -37,7 +37,7 @@ class IndexController extends \BaseController {
 
 	/**
 	 * Display the specified resource.
-	 * GET /index/{id}
+	 * GET /department/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -49,7 +49,7 @@ class IndexController extends \BaseController {
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /index/{id}/edit
+	 * GET /department/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -61,7 +61,7 @@ class IndexController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /index/{id}
+	 * PUT /department/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -73,7 +73,7 @@ class IndexController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /index/{id}
+	 * DELETE /department/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
