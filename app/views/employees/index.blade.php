@@ -14,7 +14,7 @@
           <div class="col-sm-12">
             <div class="widget-container fluid-height clearfix">
               <div class="heading">
-                <a href="{{ $route }}/create"><i class="icon-user"></i>Añadir Nuevo Empleado</a>
+                <a href="{{ $route }}/create"><i class="icon-plus"></i>Añadir Nuevo Empleado</a>
 
                 <!-- <form action="{{ $route }}" target="_blank" method="post" style="float:right;background-color:#EEEEEE;padding:1em;margin:.5em;border-radius:5px;width:100%">
                 
@@ -89,7 +89,7 @@
                     <th>
                       Direccion
                     </th>
-                    <th class="hidden-xs">
+                    <th class="col-md-2">
                       Acciones
                     </th>
                   </thead>
@@ -102,7 +102,7 @@
                         <label><input name="optionsRadios1" type="checkbox" value="option1"><span></span></label>
                       </td>
                       <td>
-                        <a class="fancybox fancybox.ajax" href="{{ $route }}/show/{{ Crypt::encrypt($employee->id) }}">{{ $employee->identification_number }}</a>
+                        <a class="fancybox fancybox.ajax" href="{{ $route }}/show/{{ Crypt::encrypt($employee->id) }}" title="Ver Datos">{{ $employee->identification_number }}</a>
                       </td>
                       <td class="hidden-xs">
                         {{ $employee->first_name }}
@@ -119,10 +119,12 @@
                       <td class="hidden-xs">
                         {{ $employee->address }}
                       </td>
-                      <td class="actions">
-                        <div class="action-buttons">
-                          <a class="table-actions" href="{{ $route }}/edit/{{ Crypt::encrypt($employee->id) }}"><i class="icon-pencil"></i></a>
-                          <a class="table-actions" href="{{ $route }}/delete/{{ Crypt::encrypt($employee->id) }}"><i class="icon-trash"></i></a>
+                      <td class="actions col-md-2">
+                        <div class="action-buttons col-md-2">
+                          <a class="table-actions fancybox fancybox.ajax" href="{{ $route }}/show/{{ Crypt::encrypt($employee->id) }}" title="Ver Datos"><i class="icon-eye-open"></i></a>
+                          <a class="table-actions" href="{{ $route }}/{{ Crypt::encrypt($employee->id) }}/familiars/" title="Familiares"><i class="icon-heart"></i></a>
+                          <a class="table-actions" href="{{ $route }}/edit/{{ Crypt::encrypt($employee->id) }}" title="Editar"><i class="icon-pencil"></i></a>
+                          <a class="table-actions" href="{{ $route }}/delete/{{ Crypt::encrypt($employee->id) }}" title="Eliminar"><i class="icon-trash"></i></a>
                         </div>
                       </td>
                     </tr>

@@ -38,11 +38,10 @@ class EmployeeController extends \BaseController {
 	public function getCreate()
 	{
 
-    $departments = Departments::all();
-
 		$array = array(
 			'route' => $this->route,
-      'departments' => $departments
+      'divisions' => Divisions::all(),
+      'offices' => Offices::all(),
 		);
 
 		return View::make('employees.create')->with( $array );
@@ -64,6 +63,9 @@ class EmployeeController extends \BaseController {
 		$fecha_vencimiento = $day.'-'.$month.'-'.$year;
 
 		$employee = new Employees();
+    $employee->id_office = Input::get('id_office');
+    $employee->id_division = Input::get('id_division');
+    $employee->contract = Input::get('contract');
     $employee->first_name = Input::get('first_name');
     $employee->last_name = Input::get('last_name');
     $employee->identification_number = Input::get('identification_number');
@@ -77,7 +79,9 @@ class EmployeeController extends \BaseController {
     $employee->admission_date = date("Y-m-d", strtotime(Input::get('admission_date')));
     $employee->address = Input::get('address');
     $employee->phone = Input::get('phone');
-    $employee->id_department = Input::get('id_department');
+    $employee->movil = Input::get('movil');
+    $employee->ability = Input::get('ability');
+    $employee->size = Input::get('size');
     $employee->type = 'normal';
     $employee->status = 'publish';
 
@@ -91,15 +95,11 @@ class EmployeeController extends \BaseController {
 
 		if( $id != '' ):
 
-			$id = Crypt::decrypt($id);
-			$employee = Employees::find($id);
-
-      $departments = Departments::all();
-
 			$array = array(
 				'route' => $this->route,
-				'employee' => $employee,
-        'departments' => $departments
+				'employee' => Employees::find(Crypt::decrypt($id)),
+        'divisions' => Divisions::all(),
+        'offices' => Offices::all(),
 				);	
 
 			return View::make('employees.edit')->with( $array );
@@ -114,8 +114,10 @@ class EmployeeController extends \BaseController {
   
   public function postEdit( $id = '' ){
 
-    $id = Crypt::decrypt($id);
-    $employee = Employees::find($id);
+    $employee = Employees::find(Crypt::decrypt($id));
+    $employee->id_office = Input::get('id_office');
+    $employee->id_division = Input::get('id_division');
+    $employee->contract = Input::get('contract');
     $employee->first_name = Input::get('first_name');
     $employee->last_name = Input::get('last_name');
     $employee->identification_number = Input::get('identification_number');
@@ -129,7 +131,9 @@ class EmployeeController extends \BaseController {
     $employee->admission_date = date("Y-m-d", strtotime(Input::get('admission_date')));
     $employee->address = Input::get('address');
     $employee->phone = Input::get('phone');
-    $employee->id_department = Input::get('id_department');
+    $employee->movil = Input::get('movil');
+    $employee->ability = Input::get('ability');
+    $employee->size = Input::get('size');
     $employee->type = 'normal';
     $employee->status = 'publish';
 

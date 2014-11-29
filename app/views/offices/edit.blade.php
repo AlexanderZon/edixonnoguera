@@ -5,7 +5,7 @@
       <div class="container-fluid main-content">
         <div class="page-title">
           <h1>
-            Eliminar Familiar
+            Edición de Cargos
           </h1>
         </div>
         <!-- DataTables Example -->
@@ -18,13 +18,16 @@
 
               <div class="widget-content padded">
 		        <form action="" method="post" class="form-horizontal">
-		          <div class="form-group">
-			            <label class="control-label col-md-7">¿Usted está seguro que desea eliminar a {{ $employee->first_name }} {{ $employee->last_name }}?</label>
-			            <div class="col-md-2">
-			              	<input class="form-control" placeholder="" value="Si, estoy seguro" type="submit" style="display:inline-block">
-			            </div>
-			            <div class="col-md-2">
-                			<a href="{{ $route }}" class="form-control"  style="display:inline-block;text-align:center">No, ir Atrás</a>
+              <div class="form-group">
+                  <label class="control-label col-md-2">Nombre</label>
+                  <div class="col-md-7">
+                    <input class="form-control" placeholder="Escriba el nombre de la gerencia" name="name" type="text" value="{{ $office->title }}"/>
+                  </div>
+              </div>
+					<div class="form-group">
+			            <label class="control-label col-md-2"></label>
+			            <div class="col-md-7">
+			              <input class="form-control" placeholder="" value="Enviar" type="submit">
 			            </div>
 			        </div>
 		        </form>

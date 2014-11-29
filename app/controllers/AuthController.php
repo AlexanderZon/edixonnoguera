@@ -8,7 +8,7 @@ class AuthController extends \BaseController {
 
 		if( Auth::check() ):
 
-			return Redirect::to('/dashborad');
+			return Redirect::to('/employees');
 
 		else:
 

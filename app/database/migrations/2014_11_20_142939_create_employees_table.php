@@ -15,7 +15,9 @@ class CreateEmployeesTable extends Migration {
 		Schema::create('employees', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('id_department');
+			$table->integer('id_division');
+			$table->integer('id_office');			#
+			$table->string('contract');				#
 			$table->string('first_name');
 			$table->string('last_name');
 			$table->string('identification_number');
@@ -29,6 +31,9 @@ class CreateEmployeesTable extends Migration {
 			$table->date('admission_date');
 			$table->string('address');
 			$table->string('phone');
+			$table->string('movil');				#
+			$table->string('ability');				#
+			$table->string('size');					#
 			$table->string('type');
 			$table->string('status');
 			$table->timestamps();

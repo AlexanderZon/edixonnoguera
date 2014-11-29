@@ -6,7 +6,7 @@
       Sistema
     </title>
     
-    <link rel="icon" href="/images/logo.png" />
+    <link rel="icon" href="/images/logo.jpg" />
 
    <link href="/stylesheets/fonts.googleapis.css" media="all" rel="stylesheet" type="text/css" />
 
@@ -145,9 +145,9 @@
       <div class="navbar navbar-fixed-top scroll-hide">
         <div class="container-fluid top-bar">
           <div class="pull-center">
-            <ul class="nav navbar-nav pull-right">
+            <ul class="nav navbar-nav pull-center">
               <li >
-                <span style="width:100%;font-size: 20pt; float: left">Sistema de Gestión de Asistencias</span>
+                <img src="/images/header_gobierno.png" height="45px">
               </li>
               <!--
               <li class="dropdown settings hidden-xs">
@@ -175,8 +175,36 @@
                 </ul>
               </li>
                 -->
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+              <!--
+              <li class="dropdown settings hidden-xs">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="/#"><span aria-hidden="true" class="se7en-gear"></span>
+                  <div class="sr-only">
+                    Settings
+                  </div>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="settings-link blue" href="/javascript:chooseStyle('none', 30)"><span></span>Blue</a>
+                  </li>
+                  <li>
+                    <a class="settings-link green" href="/javascript:chooseStyle('green-theme', 30)"><span></span>Green</a>
+                  </li>
+                  <li>
+                    <a class="settings-link orange" href="/javascript:chooseStyle('orange-theme', 30)"><span></span>Orange</a>
+                  </li>
+                  <li>
+                    <a class="settings-link magenta" href="/javascript:chooseStyle('magenta-theme', 30)"><span></span>Magenta</a>
+                  </li>
+                  <li>
+                    <a class="settings-link gray" href="/javascript:chooseStyle('gray-theme', 30)"><span></span>Gray</a>
+                  </li>
+                </ul>
+              </li>
+                -->
               <li class="dropdown user hidden-xs"><a data-toggle="dropdown" class="dropdown-toggle" href="/#">
-                <img width="34" height="34" src="/images/logo.png" />{{ Auth::user()->first_name}} {{ Auth::user()->last_name}}<b class="caret"></b></a>
+                <img width="34" height="34" src="/images/logo.jpg" />{{ Auth::user()->first_name}} {{ Auth::user()->last_name}}<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <!-- <li><a href="/#">
                     <i class="icon-user"></i>Mi Cuenta</a>
@@ -198,18 +226,21 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li>
-                <a href="/employees"><span aria-hidden="true" class="se7en-home"></span>Empleados</a>
+                <a href="/employees"><span aria-hidden="true" class="icon-male"></span>Empleados</a>
               </li>
-              <li><a href="/reposes">
-                <span aria-hidden="true" class="se7en-feed"></span>Reposos</a>
-              </li>
-              <li><a href="/directorates">
-                <span aria-hidden="true" class="se7en-feed"></span>Direcciones</a>
-              </li>
-              <li><a href="/departments">
-                <span aria-hidden="true" class="se7en-feed"></span>Departamentos</a>
+              <li><a href="/permissions">
+                <span aria-hidden="true" class="icon-stethoscope"></span>Permisos</a>
               </li>
               @if(Auth::check() && Auth::user()->type=='administrator')
+              <li><a href="/managements">
+                <span aria-hidden="true" class="icon-sitemap"></span>Gerencias</a>
+              </li>
+              <li><a href="/divisions">
+                <span aria-hidden="true" class="icon-sort-by-attributes"></span>Divisiones</a>
+              </li>
+              <li><a href="/offices">
+                <span aria-hidden="true" class="icon-suitcase"></span>Cargos</a>
+              </li>
               <li><a href="/users">
                 <span aria-hidden="true" class="icon-user"></span>Usuarios</a>
               </li>
@@ -240,7 +271,7 @@
       }
     </style>
     <footer>
-        Desarrollado por Rosangela Romero 2014|vesión 1.0
+        Desarrollado por Edixon Noguera 2014|vesión 1.0
         
     </footer>
   </body>

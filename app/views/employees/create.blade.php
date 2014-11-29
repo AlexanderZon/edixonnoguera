@@ -13,7 +13,7 @@
           <div class="col-lg-12">
             <div class="widget-container fluid-height clearfix">
               <div class="heading">
-                <a href="{{ $route }}"><i class="icon-user"></i>Ir Atrás</a>
+                <a href="{{ $route }}"><i class="icon-chevron-left"></i>Ir Atrás</a>
               </div>
 
               <div class="widget-content padded">
@@ -36,14 +36,25 @@
 			              <input class="form-control" placeholder="E.j: V12345678" name="identification_number" type="text" required>
 			            </div>
 
+			            <label class="control-label col-md-1">Habilidad</label>
+			            <div class="col-md-2">
+	                    	<select class="select2able select2-offscreen" tabindex="-1" name="ability" id="ability" required>
+	                    		<option value="DERECHA">DERECHA</option>
+	                    		<option value="IZQUIERDA">IZQUIERDA</option>
+	                    	</select>
+			            </div>
+
 			        </div>
 
 		         	<div class="form-group">
 
-			            <label class="control-label col-md-1">Sexo</label>
-			            <div class="col-md-2">
-			              <input class="form-control" placeholder="Masculino/Femenino" name="sex" type="text" required>
-			            </div>
+	                  	<label class="control-label col-md-1">Sexo</label>
+	                  	<div class="col-md-2">
+	                    	<select class="select2able select2-offscreen" tabindex="-1" name="sex" id="sex" required>
+	                    		<option value="MASCULINO">MASCULINO</option>
+	                    		<option value="FEMENINO">FEMENINO</option>
+	                    	</select>
+	                  	</div>	
 
 			            <label class="control-label col-md-1">Fecha de Nacimiento</label>
 			            <div class="col-md-2">
@@ -55,6 +66,18 @@
 			            <label class="control-label col-md-1">Lugar de Nacimiento</label>
 			            <div class="col-md-2">
 			              <input class="form-control" placeholder="Indique el Lugar de Nacimiento" name="born_place" type="text" required>
+			            </div>
+
+			            <label class="control-label col-md-1">Talla</label>
+			            <div class="col-md-2">
+	                    	<select class="select2able select2-offscreen" tabindex="-1" name="size" id="size" required>
+	                    		<option value="SS">SS</option>
+	                    		<option value="S">S</option>
+	                    		<option value="M" selected>M</option>
+	                    		<option value="L">L</option>
+	                    		<option value="XL">XL</option>
+	                    		<option value="XXL">XXL</option>
+	                    	</select>
 			            </div>
 
 			        </div>
@@ -73,7 +96,7 @@
 
 			            <label class="control-label col-md-1">Número de Hijos</label>
 			            <div class="col-md-2">
-			              <input class="form-control" placeholder="Indique el Número de Hijos" name="children_number" type="text" min="1" step="1" required>
+			              <input class="form-control" placeholder="Indique el Número de Hijos" name="children_number" type="number" min="0" step="1" required>
 			            </div>
 
 			        </div>
@@ -103,19 +126,48 @@
 
 			            <label class="control-label col-md-1">Dirección</label>
 			            <div class="col-md-5">
-			              <input class="form-control" placeholder="Escriba dirección del empleado" name="address" type="text" required>
+			              <input class="form-control" placeholder="Escriba la dirección del empleado" name="address" type="text" required>
 			            </div>
 
-	                  	<label class="control-label col-md-1">Departamento</label>
+			            <label class="control-label col-md-1">Celular</label>
+			            <div class="col-md-2">
+			              <input class="form-control" placeholder="Escriba el teléfono celular" name="movil" type="text">
+			            </div>
+
+			            <div class="col-md-1">
+			          	</div> 			        
+			       
+			        </div>
+			 
+					<div class="form-group">
+
+	                  	<label class="control-label col-md-1">División</label>
 	                  	<div class="col-md-2">
-	                    	<select class="select2able select2-offscreen" tabindex="-1" name="id_department" id="id_department" required>
-	                      		@foreach( $departments as $department )
-	                          		<option value="{{ $department->id }}">{{ $department->name }}</option>
+	                    	<select class="select2able select2-offscreen" tabindex="-1" name="id_division" id="id_division" required>
+	                      		@foreach( $divisions as $division )
+	                          		<option value="{{ $division->id }}">{{ $division->name }}</option>
 	                      		@endforeach
 	                    	</select>
 	                  	</div>	
 
-			            <div class="col-md-1">
+	                  	<label class="control-label col-md-1">Cargo</label>
+	                  	<div class="col-md-2">
+	                    	<select class="select2able select2-offscreen" tabindex="-1" name="id_office" id="id_division" required>
+	                      		@foreach( $offices as $office )
+	                          		<option value="{{ $office->id }}">{{ $office->title }}</option>
+	                      		@endforeach
+	                    	</select>
+	                  	</div>	
+
+	                  	<label class="control-label col-md-1">Contrato</label>
+	                  	<div class="col-md-2">
+	                    	<select class="select2able select2-offscreen" tabindex="-1" name="contract" id="id_division" required>
+	                    		<option value="CONTRATADO">CONTRATADO</option>
+	                    		<option value="FIJO">FIJO</option>
+	                    	</select>
+	                  	</div>		  
+
+			            <div class="col-md-2">
 			          	</div> 		  
 
 			            <div class="col-md-1">
